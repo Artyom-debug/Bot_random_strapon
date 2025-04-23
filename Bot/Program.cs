@@ -6,7 +6,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 using System.Collections.Generic;
 using System.Linq;
 
-var token = Environment.GetEnvironmentVariable("7915089033:AAFLLYK5kTQhlMoMb71lxmVfID-NnKmCYA8") ?? "7915089033:AAFLLYK5kTQhlMoMb71lxmVfID-NnKmCYA8";
+var token = Environment.GetEnvironmentVariable("botToken") ?? "botToken";
 
 using var cts = new CancellationTokenSource();
 var bot = new TelegramBotClient(token, cancellationToken: cts.Token);
