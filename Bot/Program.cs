@@ -23,7 +23,7 @@ bot.OnMessage += OnMessage;
 bot.OnUpdate += OnUpdate;
 
 Console.WriteLine($"{me.Username} успешно запущен. Нажмите enter для завершения работы.");
-while (Console.ReadKey(true).Key != ConsoleKey.Enter) ;
+await Task.Delay(Timeout.Infinite, cts.Token);
 cts.Cancel();
 
 async Task OnError(Exception exception, HandleErrorSource source)
