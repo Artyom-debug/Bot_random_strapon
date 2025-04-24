@@ -47,7 +47,7 @@ async Task OnMessage(Message msg, UpdateType type)
         {
             if(command.Substring(atIndex + 1) == me.Username)
             {
-                command = command.Substring(0, atIndex - 1);
+                command = command[..(atIndex)];
             }
         }
         await OnCommand(command, msg);
