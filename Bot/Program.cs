@@ -42,6 +42,13 @@ async Task OnMessage(Message msg, UpdateType type)
         if (index < 0) command = text;
         else command = text.Substring(0, index);
         command = command.ToLower();
+        if(command.LastIndexOf("@") is > 0 and int i)
+        {
+            if(command.Substring(i, command.Length) == me.Username)
+            {
+                command += command.Substring(i, command.Length);
+            }
+        }
         await OnCommand(command, msg);
     }
 }
@@ -94,7 +101,7 @@ async Task OnUpdate(Update update)
     {
         var callBack = update.CallbackQuery;
         long usersId = callBack!.From.Id;
-        int points = rnd.Next(0, 11);
+        int points = rnd.Next(1, 11);
         usersScore.TryAdd(usersId, 0);
         await bot.EditMessageReplyMarkup(callBack.Message!.Chat.Id, callBack.Message.MessageId, null);
         if (callBack.Data == "plus")
@@ -152,9 +159,9 @@ async Task GetStatistics(Message msg)
 async Task ResetToZero(Message msg)
 {
     long usersId = msg.From!.Id;
-    if (usersScore.TryGetValue(usersId, out int score) && score < -100)
+    if (usersScore.TryGetValue(usersId, out int score) && score < 0)
     {
-        await bot.SendMessage(msg.Chat.Id, "Ты был ликвидирован. Обнуление невозможно 💀!", parseMode: ParseMode.Html);
+        await bot.SendMessage(msg.Chat.Id, "Ошибка! Нельзя обнулить отрицательный страпон.");
         return;
     }
     if (usersScore.ContainsKey(usersId))
