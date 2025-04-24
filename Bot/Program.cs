@@ -42,11 +42,12 @@ async Task OnMessage(Message msg, UpdateType type)
         if (index < 0) command = text;
         else command = text.Substring(0, index);
         command = command.ToLower();
-        if(command.LastIndexOf("@") is > 0 and int i)
+        int atIndex = command.LastIndexOf('@');
+        if(atIndex > 0 && me.Username != null)
         {
-            if(command.Substring(i, command.Length) == me.Username)
+            if(command.Substring(atIndex + 1) == me.Username)
             {
-                command += command.Substring(i, command.Length);
+                command = command.Substring(0, atIndex);
             }
         }
         await OnCommand(command, msg);
