@@ -62,12 +62,12 @@ async Task OnCommand(string command, Message msg)
             await bot.SendMessage(msg.Chat, "Меню бота:\n/pull - Увеличить/уменьшить страпон.\n/stats - Отобразить статистику\n/reload - Обнулить результат.");
             break;
         case "/pull":
-            long usersId = msg.From!.Id;
-            if (usersScore.TryGetValue(usersId, out var score) && score < -100)
-            {
-                await bot.SendMessage(msg.Chat, $"<i>{msg.From!.Username}, ты больше не можешь участвовать — твой страпон ликвидирован 💀. Заплати выкуп, чтобы продолжить играть.</i>", ParseMode.Html);
-                break;
-            }
+            //long usersId = msg.From!.Id;
+            //if (usersScore.TryGetValue(usersId, out var score) && score < -100)
+            //{
+            //    await bot.SendMessage(msg.Chat, $"<i>{msg.From!.Username}, ты больше не можешь участвовать — твой страпон ликвидирован 💀. Заплати выкуп, чтобы продолжить играть.</i>", ParseMode.Html);
+            //    break;
+            //}
             if (IsHourPassed(msg.From!.Id))
                 await SendBottons(msg);
             else
